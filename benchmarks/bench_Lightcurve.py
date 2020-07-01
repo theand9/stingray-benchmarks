@@ -280,12 +280,33 @@ class Split:
         del self.lc
 
 
+class MakeLightcurve:
+    """
+    Time and Memory benchmarks for making a lightcurve.
+    """
+    params = test_arr_size
+    param_names = ['array_size']
+    timeout = 120.0
+
+    def setup(self, array_size):
+        self.times = np.arange(array_size)
+
+    def time_bench(self, array_size):
+        Lightcurve.make_lightcurve(self.times, dt=1.0)
+
+    def peakmem_bench(self, array_size):
+        Lightcurve.make_lightcurve(self.times, dt=1.0)
+
+    def teardown(self, array_size):
+        del self.lc
+
+
 class Sort:
     """
     Time and Memory benchmarks for sorting a lightcurve.
     Benchmarks for sorting by times and counts.
     """
-    params = [10**i for i in range(3, 8)]
+    params = test_arr_size
     param_names = ['array_size']
     timeout = 120.0
 

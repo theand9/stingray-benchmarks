@@ -20,7 +20,7 @@
     // If missing or the empty string, the tool will be automatically
     // determined by looking for tools on the PATH environment
     // variable./
-    "environment_type": "conda", // conda in astropy and "virtualenv" in numpy, scipy
+    "environment_type": "env", // conda in astropy and "virtualenv" in numpy, scipy
     // "environment_type": "virtualenv",
     // the base URL to show a commit for the project.
     "show_commit_url": "https://github.com/StingraySoftware/stingray/commits",
@@ -43,7 +43,8 @@
         "numpy": [],
         "scipy": [],
         "matplotlib": [],
-        "astropy": []
+        "astropy": [],
+        "numba": []
     },
     // The directory (relative to the current directory) that benchmarks are
     // stored in.  defaults to "benchmarks"

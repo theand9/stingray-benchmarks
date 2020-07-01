@@ -9,27 +9,43 @@ class Dependencies:
     """
     def setup(self):
         try:
+            # replace with absolute path to your setup.cfg
             with open('/home/apollo/stingray/setup.cfg', 'r+') as f_ptr:
                 content = f_ptr.read()
 
             substr1 = 'install_requires =\n'
             substr2 = '[options.entry_points]'
+            substr3 = 'all =\n'
+            substr4 = 'test =\n'
 
-            start_idx = content.index(substr1)
-            end_idx = content.index(substr2)
-            start_idx += len(substr1)
+            start_idx1 = content.index(substr1)
+            end_idx1 = content.index(substr2)
+            start_idx1 += len(substr1)
 
-            all_imports = content[start_idx:end_idx]
-            self.import_list = [
+            start_idx2 = content.index(substr3)
+            end_idx2 = content.index(substr4)
+            start_idx2 += len(substr3)
+
+            base_imports = content[start_idx1:end_idx1]
+            self.core_import_list = [
                 re.sub(r"[^a-zA-Z]+", '', char)
-                for char in all_imports.split("\n") if char
+                for char in base_imports.split("\n") if char
+            ]
+
+            opt_imports = content[start_idx2:end_idx2]
+            self.opt_import_list = [
+                re.sub(r"[^a-zA-Z]+", '', char)
+                for char in opt_imports.split("\n") if char
             ]
 
         except (FileNotFoundError, ValueError):
             exit()
 
-    def track_num_dependencies(self):
-        return len(self.import_list)
+    def track_core_dependencies(self):
+        return len(self.base_import_list)
+
+    def track_optional_dependencies(self):
+        return len(self.opt_import_list)
 
 
 class Imports:

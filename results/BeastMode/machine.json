@@ -1,0 +1,9 @@
+{
+    "arch": "x86_64",
+    "cpu": "Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz",
+    "machine": "BeastMode",
+    "num_cpu": "12",
+    "os": "Linux 5.4.0-39-generic",
+    "ram": "16009492",
+    "version": 1
+}

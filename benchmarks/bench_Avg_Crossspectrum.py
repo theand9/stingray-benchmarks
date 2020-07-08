@@ -7,8 +7,7 @@ except ImportError:
     print("Install stingray first")
     sys.exit()
 
-# Benchmarking from 1,000 to 100,000,000 data-points for safety
-test_arr_size = [10**i for i in range(3, 9)]
+test_arr_size = [10**i for i in range(3, 7)]
 
 
 class Init:
